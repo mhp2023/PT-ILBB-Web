@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PT. Indotan Lombok Barat Bangkit — Mining & Resources</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --ice-50:#f5fbfe;
+    --ice-100:#e8f4fc;
+    --sky-200:#c7e6f7;
+    --sky-300:#9ed3f0;
+    --ocean-400:#5ab3e0;
+    --ocean-500:#2e93cf;
+    --ocean-600:#1c76ac;
+    --navy-800:#0e3a5c;
+    --navy-900:#0a2440;
+    --navy-950:#061a30;
+    --ink-700:#1e4a68;
+    --line: rgba(28,118,172,0.16);
+    --font-display: 'Archivo', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--white);
+    color:var(--navy-900);
+    font-family:var(--font-body);
+    line-height:1.5;
+  }
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 32px;}
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky; top:0; left:0; right:0; z-index:100;
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+  }
+
+  /* --- Masthead row: logo + company text --- */
+  .masthead{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    max-width:1240px;
+    margin:0 auto;
+    padding:18px 32px;
+  }
+  .logo-group{
+    position:relative;
+    z-index:2;
+    display:flex; align-items:center; gap:20px;
+  }
+  .logo-mark{
+    width:92px; height:92px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; border-radius:50%;
+  }
+  .logo-mark img{width:100%; height:100%; object-fit:contain; image-rendering:crisp-edges;}
+  .masthead-text{ display:flex; flex-direction:column; gap:4px; justify-content:center; }
+  .company-name{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(18px, 2.6vw, 30px);
+    letter-spacing:0.01em;
+    color:var(--navy-900);
+    line-height:1.15;
+  }
+  .company-tagline{
+    font-family:var(--font-body);
+    font-size:14px;
+    color:var(--ocean-600);
+    letter-spacing:0.02em;
+  }
+
+  /* --- Sub nav row: menu links --- */
+  .subnav{
+    border-top:1px solid var(--line);
+    background:var(--ice-50);
+  }
+  .subnav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:1240px; margin:0 auto; padding:12px 32px;
+  }
+  nav ul{display:flex; gap:32px; list-style:none;}
+  nav ul li{position:relative;}
+  nav ul li a{
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--navy-800); opacity:0.85;
+    display:block; padding:4px 0;
+  }
+  nav ul li a:hover{opacity:1; color:var(--ocean-600);}
+
+  /* Dropdown Menu styling */
+  .has-dropdown:hover .dropdown-menu{
+    display:block;
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+  }
+  .dropdown-menu{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    background:var(--white);
+    min-width:240px;
+    box-shadow:0 10px 25px rgba(10,36,64,0.15);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:8px 0;
+    z-index:1000;
+    list-style:none;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:all 0.25s ease;
+  }
+  .dropdown-menu li{
+    width:100%;
+  }
+  .dropdown-menu li a{
+    padding:10px 20px;
+    font-size:11px;
+    color:var(--navy-900);
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .dropdown-menu li a:hover{
+    background:var(--ice-100);
+    color:var(--ocean-600);
+  }
+
+  .nav-search{width:18px; height:18px; color:var(--ocean-600); flex-shrink:0;}
+
+  @media (max-width:1100px){
+    nav ul{gap:20px;}
+  }
+  @media (max-width:880px){
+    .logo-mark{width:64px; height:64px;}
+    nav ul{display:none;}
+  }
+
+  /* ===== HERO CAROUSEL ===== */
+  .hero{
+    position:relative;
+    height:92vh;
+    min-height:640px;
+    overflow:hidden;
+  }
+  .slide{
+    position:absolute; inset:0;
+    opacity:0;
+    transition:opacity 1.2s ease;
+    z-index:1;
+  }
+  .slide.active{opacity:1; z-index:2;}
+  .slide .scene{position:absolute; inset:0;}
+  .slide .overlay{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(6,26,48,0.35) 0%, rgba(6,26,48,0.55) 45%, rgba(6,26,48,0.92) 100%),
+      linear-gradient(90deg, rgba(6,26,48,0.35) 0%, rgba(6,26,48,0.05) 40%);
+  }
+
+  /* Slide 1 hingga 6 */
+  .scene-1{ background-image: url('gambarsite1.jpg'); background-size:cover; background-position:center 25%; }
+  .scene-2{ background-image: url('gambarsite2.jpg'); background-size:cover; background-position:center 25%; }
+  .scene-3{ background-image: url('gambarsite3.jpg'); background-size:cover; background-position:center 25%; }
+  .scene-4{ background-image: url('gambarsite4.jpg'); background-size:cover; background-position:center 25%; }
+  .scene-5{ background-image: url('gambarsite5.jpg'); background-size:cover; background-position:center 25%; }
+  .scene-6{ background-image: url('gambarsite6.jpg'); background-size:cover; background-position:center 25%; }
+  
+  /* Slide Baru (7 hingga 16) */
+  .scene-7{ background-image: url('gambarsite7.jpeg'); background-size:cover; background-position:center; }
+  .scene-8{ background-image: url('gambarsite8.jpeg'); background-size:cover; background-position:center; }
+  .scene-9{ background-image: url('gambarsite9.jpeg'); background-size:cover; background-position:center; }
+  .scene-10{ background-image: url('gambarsite10.jpeg'); background-size:cover; background-position:center; }
+  .scene-11{ background-image: url('gambarsite11.jpeg'); background-size:cover; background-position:center; }
+  .scene-12{ background-image: url('gambarsite12.jpeg'); background-size:cover; background-position:center; }
+  .scene-13{ background-image: url('gambarsite13.jpeg'); background-size:cover; background-position:center; }
+  .scene-14{ background-image: url('gambarsite14.jpeg'); background-size:cover; background-position:center; }
+  .scene-15{ background-image: url('gambarsite15.jpeg'); background-size:cover; background-position:center; }
+  .scene-16{ background-image: url('gambarsite16.jpeg'); background-size:cover; background-position:center; }
+
+  .hero-content{
+    position:relative; z-index:10;
+    height:100%;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; max-width:780px; margin:0 auto; padding:0 24px;
+  }
+  .hero-tagline{
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.22em;
+    text-transform:uppercase; color:var(--sky-200); opacity:0.95; margin-bottom:14px;
+  }
+  .hero-eyebrow{
+    font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.28em;
+    text-transform:uppercase; color:var(--sky-300); margin-bottom:22px;
+  }
+  .hero-content h1{
+    font-family:var(--font-display); font-weight:800;
+    font-size:clamp(28px, 4.4vw, 46px); line-height:1.2; letter-spacing:-0.01em;
+    color:var(--white); margin-bottom:34px;
+    text-shadow:0 4px 24px rgba(0,0,0,0.35);
+  }
+  .btn-pill{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.1em;
+    text-transform:uppercase; font-weight:600; color:var(--navy-900);
+    padding:14px 30px; border-radius:100px; background:var(--white);
+    box-shadow:0 10px 26px rgba(0,0,0,0.25);
+    transition:all 0.25s;
+  }
+  .btn-pill:hover{ background:var(--sky-200); transform:translateY(-2px); }
+
+  /* Carousel controls */
+  .carousel-dots{
+    position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+    z-index:20; display:flex; gap:8px; max-width: 90%; flex-wrap: wrap; justify-content: center;
+  }
+  .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:rgba(255,255,255,0.4); border:none; padding:0;
+    transition:all 0.25s;
+  }
+  .dot.active{ background:var(--white); width:26px; border-radius:5px; }
+
+  .carousel-arrow{
+    position:absolute; top:50%; transform:translateY(-50%);
+    z-index:20; width:44px; height:44px; border-radius:50%;
+    background:rgba(255,255,255,0.14);
+    border:1px solid rgba(255,255,255,0.35);
+    backdrop-filter:blur(6px);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--white);
+    transition:background 0.2s;
+  }
+  .carousel-arrow:hover{ background:rgba(255,255,255,0.28); }
+  .carousel-arrow.prev{ left:24px; }
+  .carousel-arrow.next{ right:24px; }
+  .carousel-arrow svg{ width:18px; height:18px; }
+  @media (max-width:700px){ .carousel-arrow{ display:none; } }
+
+  /* ===== CARD ROW ===== */
+  .card-row{ position:relative; z-index:10; margin-top:-90px; padding-bottom:110px; }
+  .cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+  .card{
+    position:relative; height:280px;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:26px 26px 30px; overflow:hidden; border-radius:14px;
+    box-shadow:0 20px 45px rgba(10,36,64,0.18);
+  }
+  .card.photo-a{
+    background:linear-gradient(180deg, rgba(6,26,48,0.08) 0%, rgba(6,26,48,0.8) 92%),
+      linear-gradient(160deg, #c7e6f7, #5ab3e0 55%, #0e3a5c);
+    color:var(--white);
+  }
+  .card.photo-b{
+    background:linear-gradient(180deg, rgba(6,26,48,0.08) 0%, rgba(6,26,48,0.8) 92%),
+      linear-gradient(160deg, #9ed3f0, #2e93cf 55%, #061a30);
+    color:var(--white);
+  }
+  .card.info{
+    background:linear-gradient(180deg, rgba(6,26,48,0.08) 0%, rgba(6,26,48,0.8) 92%),
+      linear-gradient(160deg, #7fc4e8, #2e93cf 55%, #0a2440);
+    color:var(--white);
+  }
+  .card.photo-c{
+    background:linear-gradient(180deg, rgba(6,26,48,0.08) 0%, rgba(6,26,48,0.8) 92%),
+      linear-gradient(160deg, #b8dff2, #3f9fd6 50%, #0c2f52);
+    color:var(--white);
+  }
+  .card-tag{
+    display:inline-block; font-family:var(--font-mono); font-size:10.5px;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--ocean-600);
+    background:var(--white); padding:5px 12px; border-radius:3px;
+    margin-bottom:14px; width:fit-content;
+  }
+  .card h3{ font-family:var(--font-display); font-weight:700; font-size:19px; line-height:1.25; margin-bottom:8px; }
+  .card p{ font-size:13.5px; opacity:0.88; margin-bottom:18px; }
+  .card-link{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em;
+    text-transform:uppercase; padding:10px 18px; border-radius:100px;
+    width:fit-content; transition:all 0.2s;
+  }
+  .card.photo-a .card-link, .card.photo-b .card-link, .card.info .card-link, .card.photo-c .card-link{ color:var(--white); border:1px solid rgba(255,255,255,0.5); }
+  .card.photo-a .card-link:hover, .card.photo-b .card-link:hover, .card.info .card-link:hover, .card.photo-c .card-link:hover{ background:var(--white); color:var(--navy-900); }
+
+  /* ===== SUBPAGE SECTION STYLES ===== */
+  .subpage{
+    display:none;
+    min-height:60vh;
+    padding:80px 0;
+    background:var(--ice-50);
+  }
+  .subpage.active-page{
+    display:block;
+  }
+  .page-header{
+    border-bottom:2px solid var(--ocean-500);
+    padding-bottom:16px;
+    margin-bottom:40px;
+  }
+  .page-header h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:32px;
+    color:var(--navy-900);
+  }
+  .content-card{
+    background:var(--white);
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(10,36,64,0.06);
+    border:1px solid var(--line);
+    margin-bottom:30px;
+  }
+  .content-card h3{
+    font-family:var(--font-display);
+    font-size:24px;
+    color:var(--ocean-600);
+    margin-bottom:16px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    position:relative; z-index:1;
+    background:linear-gradient(180deg, #f2fafd, #e6f4fb);
+    border-top:1px solid var(--line);
+    padding:64px 0 32px;
+  }
+  .footer-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-bottom:44px; }
+  .office-block h4{
+    font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:0.02em;
+    color:var(--ocean-600); margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--line);
+  }
+  .office-block address{ font-style:normal; font-size:14px; line-height:1.7; color:var(--ink-700); }
+  .office-block .phone-line{
+    display:flex; align-items:center; gap:8px; margin-top:12px;
+    font-family:var(--font-mono); font-size:13px; color:var(--navy-900); font-weight:600;
+  }
+  .office-block .phone-line svg{ width:14px; height:14px; color:var(--ocean-600); flex-shrink:0; }
+  .footer-bottom{
+    display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;
+    padding-top:28px; border-top:1px solid var(--line);
+    font-family:var(--font-mono); font-size:12px; color:var(--ocean-600); opacity:0.85;
+  }
+  .footer-bottom .phone-line{ display:flex; align-items:center; gap:8px; font-weight:600; color:var(--navy-900); }
+  .footer-bottom .phone-line svg{ width:14px; height:14px; color:var(--ocean-600); }
+
+  @media (max-width:1080px) and (min-width:881px){
+    .cards{grid-template-columns:repeat(2,1fr);}
+  }
+
+  @media (max-width:880px){
+    nav ul{display:none;}
+    .cards{grid-template-columns:1fr;}
+    .card-row{margin-top:-50px;}
+    .hero{min-height:76vh;}
+    .footer-grid{grid-template-columns:1fr;}
+  }
+  :focus-visible{outline:2px solid var(--ocean-500); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="masthead">
+    <div class="logo-group">
+      <div class="logo-mark">
+        <img src="Logo_ILBB.png" alt="Logo PT. Indotan Lombok Barat Bangkit">
+      </div>
+      <div class="masthead-text">
+        <div class="company-name">PT INDOTAN LOMBOK BARAT BANGKIT</div>
+        <div class="company-tagline">Innovative . Learning . Balance . Belonging</div>
+      </div>
+    </div>
+  </div>
+  <div class="subnav">
+    <div class="subnav-inner">
+      <nav style="padding:0; max-width:none; margin:0;">
+        <ul>
+          <li><a href="#" class="nav-link" data-target="home">Home</a></li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-link" data-target="about">About Us ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="nav-link" data-target="management">Our Management</a></li>
+              <li><a href="#" class="nav-link" data-target="ownership">Our Ownership</a></li>
+            </ul>
+          </li>
+          <li><a href="#" class="nav-link" data-target="culture">Our ILBB Culture</a></li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-link" data-target="block">Our Block ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="nav-link" data-target="block-pelangan">Project Pelangan</a></li>
+              <li><a href="#" class="nav-link" data-target="block-mecanggah">Project Mecanggah</a></li>
+              <li><a href="#" class="nav-link" data-target="block-selodong">Project Selodong</a></li>
+            </ul>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-link" data-target="project">Our Project ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="nav-link" data-target="project-construction">Construction CIL 50 TPD</a></li>
+              <li><a href="#" class="nav-link" data-target="project-operation">Operation CIL 50 TPD</a></li>
+              <li><a href="#" class="nav-link" data-target="project-drilling">Drilling Project</a></li>
+              <li><a href="#" class="nav-link" data-target="project-development">Project Development CIL 2000 TPD</a></li>
+              <li><a href="#" class="nav-link" data-target="project-exploration">Exploration</a></li>
+            </ul>
+          </li>
+          <li><a href="#" class="nav-link" data-target="contact">Contact</a></li>
+          <li><a href="#" class="nav-link" data-target="career">Career</a></li>
+        </ul>
+      </nav>
+      <svg class="nav-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN HOME CONTENT VIEW -->
+<div id="page-home" class="page-view">
+  <section class="hero" id="heroCarousel">
+    <div class="slide active" data-slide="0">
+      <div class="scene scene-1"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="1">
+      <div class="scene scene-2"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="2">
+      <div class="scene scene-3"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="3">
+      <div class="scene scene-4"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="4">
+      <div class="scene scene-5"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="5">
+      <div class="scene scene-6"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="6">
+      <div class="scene scene-7"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="7">
+      <div class="scene scene-8"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="8">
+      <div class="scene scene-9"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="9">
+      <div class="scene scene-10"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="10">
+      <div class="scene scene-11"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="11">
+      <div class="scene scene-12"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="12">
+      <div class="scene scene-13"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="13">
+      <div class="scene scene-14"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="14">
+      <div class="scene scene-15"></div>
+      <div class="overlay"></div>
+    </div>
+    <div class="slide" data-slide="15">
+      <div class="scene scene-16"></div>
+      <div class="overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-tagline">Innovative &ndash; Learning &ndash; Balance &ndash; Belonging</div>
+      <div class="hero-eyebrow">PT. Indotan Lombok Barat Bangkit</div>
+      <h1>From Earth for Life :<br>Mining with Heart and Integrity</h1>
+      <a href="#" class="btn-pill">Discover More →</a>
+    </div>
+
+    <button class="carousel-arrow prev" aria-label="Slide sebelumnya">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="carousel-arrow next" aria-label="Slide berikutnya">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+
+    <div class="carousel-dots">
+      <button class="dot active" data-goto="0" aria-label="Slide 1"></button>
+      <button class="dot" data-goto="1" aria-label="Slide 2"></button>
+      <button class="dot" data-goto="2" aria-label="Slide 3"></button>
+      <button class="dot" data-goto="3" aria-label="Slide 4"></button>
+      <button class="dot" data-goto="4" aria-label="Slide 5"></button>
+      <button class="dot" data-goto="5" aria-label="Slide 6"></button>
+      <button class="dot" data-goto="6" aria-label="Slide 7"></button>
+      <button class="dot" data-goto="7" aria-label="Slide 8"></button>
+      <button class="dot" data-goto="8" aria-label="Slide 9"></button>
+      <button class="dot" data-goto="9" aria-label="Slide 10"></button>
+      <button class="dot" data-goto="10" aria-label="Slide 11"></button>
+      <button class="dot" data-goto="11" aria-label="Slide 12"></button>
+      <button class="dot" data-goto="12" aria-label="Slide 13"></button>
+      <button class="dot" data-goto="13" aria-label="Slide 14"></button>
+      <button class="dot" data-goto="14" aria-label="Slide 15"></button>
+      <button class="dot" data-goto="15" aria-label="Slide 16"></button>
+    </div>
+  </section>
+
+  <div class="card-row">
+    <div class="wrap">
+      <div class="cards">
+        <div class="card photo-a">
+          <h3>Innovative</h3>
+          <p>Mendorong karyawan untuk berpikir kreatif, mencari cara baru yang lebih efisien dan tidak takut bereksperimen.</p>
+          <a href="#" class="card-link">Learn More →</a>
+        </div>
+        <div class="card photo-b">
+          <h3>Learning</h3>
+          <p>Budaya pertumbuhan yang berfokus pada pengembangan keterampilan, pelatihan, dan peningkatan pengetahuan secara terus menerus.</p>
+          <a href="#" class="card-link">Learn More →</a>
+        </div>
+        <div class="card info">
+          <h3>Balanced</h3>
+          <p>Mendukung keseimbangan kehidupan kerja (work life balance), kesehatan mental, dan fleksibilitas karyawan.</p>
+          <a href="#" class="card-link">Learn More →</a>
+        </div>
+        <div class="card photo-c">
+          <h3>Belonging</h3>
+          <p>Membangun lingkungan yang inklusif, kolaboratif, dimana setiap karyawan merasa dihargai dan aman.</p>
+          <a href="#" class="card-link">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: OUR MANAGEMENT -->
+<div id="page-management" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header">
+      <h2>Our Management</h2>
+    </div>
+    <div class="content-card">
+      <h3>Board of Direksi (BoD)</h3>
+      <p>Board of Direksi (BoD) memimpin operasi harian dan strategi pertumbuhan PT. Indotan Lombok Barat Bangkit dengan tata kelola dan integritas tinggi.</p>
+    </div>
+    <div class="content-card">
+      <h3>BoC (Board of Comisaris)</h3>
+      <p>Board of Comisaris (BoC) bertugas mengawasi kebijakan direksi serta memberikan nasihat demi keberlanjutan dan kemajuan perusahaan secara jangka panjang.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: OUR OWNERSHIP -->
+<div id="page-ownership" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header">
+      <h2>Our Ownership</h2>
+    </div>
+    <div class="content-card">
+      <h3>Our Ownership</h3>
+      <p>Informasi struktur kepemilikan saham dan pemegang saham PT. Indotan Lombok Barat Bangkit yang berkomitmen pada pertambangan berkelanjutan.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: OUR ILBB CULTURE -->
+<div id="page-culture" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header">
+      <h2>Our ILBB Culture</h2>
+    </div>
+    <div class="content-card">
+      <h3>Innovative, Learning, Balance, Belonging</h3>
+      <p>Budaya perusahaan PT. Indotan Lombok Barat Bangkit berlandaskan nilai-nilai inti yang mendorong inovasi, pembelajaran berkelanjutan, keseimbangan hidup, serta rasa memiliki yang kuat di antara seluruh anggota tim.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: PROJECT PELANGAN -->
+<div id="page-block-pelangan" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header">
+      <h2>Project Pelangan</h2>
+    </div>
+    <div class="content-card">
+      <h3>Project Pelangan</h3>
+      <p>Informasi dan detail operasional mengenai Project Pelangan di wilayah kerja PT. Indotan Lombok Barat Bangkit.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: PROJECT MECANGGAH -->
+<div id="page-block-mecanggah" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header">
+      <h2>Project Mecanggah</h2>
+    </div>
+    <div class="content-card">
+      <h3>Project Mecanggah</h3>
+      <p>Informasi dan detail operasional mengenai Project Mecanggah di wilayah kerja PT. Indotan Lombok Barat Bangkit.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: PROJECT SELODONG -->
+<div id="page-block-selodong" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header">
+      <h2>Project Pelangan</h2>
+    </div>
+    <div class="content-card">
+      <h3>Project Pelangan</h3>
+      <p>Informasi dan detail terkait Project Pelangan / Selodong di wilayah operasional perusahaan.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: CONSTRUCTION CIL 50 TPD -->
+<div id="page-project-construction" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header">
+      <h2>Construction CIL 50 TPD</h2>
+    </div>
+    <div class="content-card">
+      <h3>Construction CIL 50 TPD</h3>
+      <p>Progres dan rincian teknis pembangunan fasilitas pengolahan mineral dengan metode Carbon in Leach (CIL) kapasitas 50 Ton Per Day (TPD).</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: OPERATION CIL 50 TPD -->
+<div id="page-project-operation" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header">
+      <h2>Operation CIL 50 TPD</h2>
+    </div>
+    <div class="content-card">
+      <h3>Operation CIL 50 TPD</h3>
+      <p>Aktivitas operasional harian fasilitas pengolahan bijih emas CIL berkapasitas 50 Ton Per Day.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: DRILLING PROJECT -->
+<div id="page-project-drilling" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header">
+      <h2>Drilling Project</h2>
+    </div>
+    <div class="content-card">
+      <h3>Drilling Project</h3>
+      <p>Program pengeboran eksplorasi dan delimitasi cadangan untuk mendukung ekspansi sumber daya mineral perusahaan.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: PROJECT DEVELOPMENT CIL 2000 TPD -->
+<div id="page-project-development" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header">
+      <h2>Project Development CIL 2000 TPD</h2>
+    </div>
+    <div class="content-card">
+      <h3>Project Development CIL 2000 TPD</h3>
+      <p>Perencanaan strategis dan pengembangan fasilitas skala besar CIL kapasitas 2000 Ton Per Day untuk peningkatan kapasitas produksi jangka panjang.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: EXPLORATION -->
+<div id="page-project-exploration" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header">
+      <h2>Exploration</h2>
+    </div>
+    <div class="content-card">
+      <h3>Exploration</h3>
+      <p>Kegiatan penyelidikan geologi, pemetaan, dan analisis data untuk menemukan potensi cadangan mineral baru di wilayah konsesi.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: CONTACT -->
+<div id="page-contact" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header">
+      <h2>Contact Us</h2>
+    </div>
+    <div class="content-card">
+      <h3>Get in Touch</h3>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
+          <span style="color: var(--ocean-600); font-size: 18px; line-height: 1;">📍</span>
+          <div>
+            <strong>Head Office :</strong><br>
+            Bakrie Tower Lantai 22, Komp. Rasuna Epicentrum, Jl. HR Rasuna Said, Karet Kuningan, Setiabudi, Jakarta Selatan, DKI Jakarta – Indonesia 12940
+          </div>
+        </li>
+        <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
+          <span style="color: var(--ocean-600); font-size: 18px; line-height: 1;">📍</span>
+          <div>
+            <strong>Jakarta Office :</strong><br>
+            Jl. Pangrango No 3A, Kel. Guntur, Kec. Setiabudi, Kota Jakarta Selatan, DKI Jakarta
+          </div>
+        </li>
+        <li style="margin-bottom: 0; display: flex; align-items: flex-start; gap: 12px;">
+          <span style="color: var(--ocean-600); font-size: 18px; line-height: 1;">📍</span>
+          <div>
+            <strong>Site Office :</strong><br>
+            Jl. Raya Sepi, Sekotong Tengah, Kecamatan Sekotong, Kabupaten Lombok Barat, Nusa Tenggara Barat, Indonesia 83365
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: CAREER -->
+<div id="page-career" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header">
+      <h2>Career</h2>
+    </div>
+    <div class="content-card">
+      <h3>Join Our Team</h3>
+      <p>Temukan peluang karir dan bergabunglah bersama kami untuk membangun industri pertambangan yang berintegritas, inovatif, dan berkelanjutan.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="office-block">
+        <h4>Head Office</h4>
+        <address>
+          Bakrie Tower Lantai 22,<br>
+          Komp. Rasuna Epicentrum,<br>
+          Jl. HR Rasuna Said, Karet Kuningan,<br>
+          Setiabudi, Jakarta Selatan<br>
+          DKI Jakarta &ndash; Indonesia 12940
+        </address>
+      </div>
+      <div class="office-block">
+        <h4>Jakarta Office</h4>
+        <address>
+          Jl. Pangrango No 3A, Kel. Guntur,<br>
+          Kec. Setiabudi, Kota Jakarta Selatan<br>
+          DKI Jakarta
+        </address>
+        <div class="phone-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Phone : 021-3882 5452
+        </div>
+      </div>
+      <div class="office-block">
+        <h4>Site Office</h4>
+        <address>
+          Jl. Raya Sepi, Sekotong Tengah,<br>
+          Kecamatan Sekotong,<br>
+          Kabupaten Lombok Barat,<br>
+          Nusa Tenggara Barat<br>
+          Indonesia 83365
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PT. Indotan Lombok Barat Bangkit</span>
+      <div class="phone-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        0813-3414-4419
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    /* Carousel Logic */
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.carousel-arrow.prev');
+    const nextBtn = document.querySelector('.carousel-arrow.next');
+    let current = 0;
+    let timer;
+
+    function goTo(index){
+      if(!slides.length) return;
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function next(){ goTo(current + 1); }
+    function prev(){ goTo(current - 1); }
+
+    function startAuto(){
+      timer = setInterval(next, 5000);
+    }
+    function resetAuto(){
+      clearInterval(timer);
+      startAuto();
+    }
+
+    if(nextBtn && prevBtn){
+      nextBtn.addEventListener('click', function(){ next(); resetAuto(); });
+      prevBtn.addEventListener('click', function(){ prev(); resetAuto(); });
+      dots.forEach(function(dot){
+        dot.addEventListener('click', function(){
+          goTo(parseInt(dot.dataset.goto, 10));
+          resetAuto();
+        });
+      });
+      startAuto();
+    }
+
+    /* Page Navigation Logic */
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pageViews = document.querySelectorAll('.page-view');
+    const pageHome = document.getElementById('page-home');
+
+    function switchPage(target){
+      pageViews.forEach(page => page.style.display = 'none');
+      pageViews.forEach(page => page.classList.remove('active-page'));
+
+      const targetPage = document.getElementById('page-' + target);
+      if(targetPage){
+        if(target === 'home'){
+          pageHome.style.display = 'block';
+        } else {
+          targetPage.style.display = 'block';
+          targetPage.classList.add('active-page');
+        }
+        window.scrollTo({top:0, behavior:'smooth'});
+      } else {
+        pageHome.style.display = 'block';
+      }
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e){
+        const target = this.getAttribute('data-target');
+        if(target && target !== 'about' && target !== 'block' && target !== 'project'){
+          e.preventDefault();
+          switchPage(target);
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
