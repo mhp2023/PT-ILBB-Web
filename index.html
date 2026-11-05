@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PT. Indotan Lombok Barat Bangkit — Mining & Resources</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --white:#ffffff;
-    --ice-50:#f5fbfe;
+    --white:#fffdfdfe;
+    --ice-50:#2368c1eb;
     --ice-100:#e8f4fc;
-    --sky-200:#c7e6f7;
-    --sky-300:#9ed3f0;
-    --ocean-400:#5ab3e0;
-    --ocean-500:#2e93cf;
+    --sky-200:#249fe1;
+    --sky-300:#0f4d6e;
+    --ocean-400:#12435c;
+    --ocean-500:#08354f;
     --ocean-600:#1c76ac;
     --navy-800:#0e3a5c;
     --navy-900:#0a2440;
@@ -36,69 +36,58 @@
   button{font-family:inherit; cursor:pointer;}
   .wrap{max-width:1240px; margin:0 auto; padding:0 32px;}
 
-  /* ===== NAV ===== */
+  /* ===== HEADER & NAV STYLING ===== */
   header{
     position:sticky; top:0; left:0; right:0; z-index:100;
     background:var(--white);
     border-bottom:1px solid var(--line);
   }
 
-  /* --- Masthead row: logo + company text --- */
   .masthead{
-    position:relative;
-    z-index:2;
     display:flex;
     align-items:center;
+    justify-content:flex-start;
+    gap:24px;
     max-width:1240px;
     margin:0 auto;
-    padding:18px 32px;
+    padding:16px 32px;
   }
   .logo-group{
-    position:relative;
-    z-index:2;
-    display:flex; align-items:center; gap:20px;
+    display:flex; align-items:center; gap:16px;
   }
   .logo-mark{
-    width:92px; height:92px;
+    width:90px; height:90px;
     display:flex; align-items:center; justify-content:center;
     flex-shrink:0; border-radius:50%;
   }
   .logo-mark img{width:100%; height:100%; object-fit:contain; image-rendering:crisp-edges;}
-  .masthead-text{ display:flex; flex-direction:column; gap:4px; justify-content:center; }
-  .company-name{
+  
+  .company-title-main{
     font-family:var(--font-display);
     font-weight:800;
-    font-size:clamp(18px, 2.6vw, 30px);
+    font-size:clamp(28px, 3vw, 48px);
     letter-spacing:0.01em;
     color:var(--navy-900);
-    line-height:1.15;
-  }
-  .company-tagline{
-    font-family:var(--font-body);
-    font-size:14px;
-    color:var(--ocean-600);
-    letter-spacing:0.02em;
+    line-height:1.2;
   }
 
-  /* --- Sub nav row: menu links --- */
   .subnav{
     border-top:1px solid var(--line);
-    background:var(--ice-50);
+    background:#1d4b8e;
   }
   .subnav-inner{
     display:flex; align-items:center; justify-content:space-between;
-    max-width:1240px; margin:0 auto; padding:12px 32px;
+    max-width:1240px; margin:0 auto; padding:10px 32px;
   }
-  nav ul{display:flex; gap:32px; list-style:none;}
+  nav ul{display:flex; gap:22px; list-style:none; flex-wrap:wrap;}
   nav ul li{position:relative;}
   nav ul li a{
-    font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.08em;
-    text-transform:uppercase; color:var(--navy-800); opacity:0.85;
+    font-family:Arial, sans-serif; font-size:14px;
+    text-transform:uppercase; color:#FFFFFF; opacity:0.88; font-weight:600;
     display:block; padding:4px 0;
   }
-  nav ul li a:hover{opacity:1; color:var(--ocean-600);}
+  nav ul li a:hover{opacity:1; color:#FFD700;}
 
-  /* Dropdown Menu styling */
   .has-dropdown:hover .dropdown-menu{
     display:block;
     opacity:1;
@@ -123,9 +112,7 @@
     transform:translateY(10px);
     transition:all 0.25s ease;
   }
-  .dropdown-menu li{
-    width:100%;
-  }
+  .dropdown-menu li{ width:100%; }
   .dropdown-menu li a{
     padding:10px 20px;
     font-size:11px;
@@ -140,19 +127,16 @@
 
   .nav-search{width:18px; height:18px; color:var(--ocean-600); flex-shrink:0;}
 
-  @media (max-width:1100px){
-    nav ul{gap:20px;}
-  }
   @media (max-width:880px){
-    .logo-mark{width:64px; height:64px;}
+    .masthead{flex-direction:column; align-items:flex-start;}
     nav ul{display:none;}
   }
 
   /* ===== HERO CAROUSEL ===== */
   .hero{
     position:relative;
-    height:92vh;
-    min-height:640px;
+    height:85vh;
+    min-height:560px;
     overflow:hidden;
   }
   .slide{
@@ -170,15 +154,12 @@
       linear-gradient(90deg, rgba(6,26,48,0.35) 0%, rgba(6,26,48,0.05) 40%);
   }
 
-  /* Slide 1 hingga 6 */
-  .scene-1{ background-image: url('gambarsite1.jpg'); background-size:cover; background-position:center 25%; }
-  .scene-2{ background-image: url('gambarsite2.jpg'); background-size:cover; background-position:center 25%; }
-  .scene-3{ background-image: url('gambarsite3.jpg'); background-size:cover; background-position:center 25%; }
-  .scene-4{ background-image: url('gambarsite4.jpg'); background-size:cover; background-position:center 25%; }
-  .scene-5{ background-image: url('gambarsite5.jpg'); background-size:cover; background-position:center 25%; }
-  .scene-6{ background-image: url('gambarsite6.jpg'); background-size:cover; background-position:center 25%; }
-  
-  /* Slide Baru (7 hingga 16) */
+  .scene-1{ background-image: url('gambarsite1.jpeg'); background-size:cover; background-position:center 25%; }
+  .scene-2{ background-image: url('gambarsite2.jpeg'); background-size:cover; background-position:center 25%; }
+  .scene-3{ background-image: url('gambarsite3.jpeg'); background-size:cover; background-position:center 25%; }
+  .scene-4{ background-image: url('gambarsite4.jpeg'); background-size:cover; background-position:center 25%; }
+  .scene-5{ background-image: url('gambarsite5.jpeg'); background-size:cover; background-position:center 25%; }
+  .scene-6{ background-image: url('gambarsite6.jpeg'); background-size:cover; background-position:center 25%; }
   .scene-7{ background-image: url('gambarsite7.jpeg'); background-size:cover; background-position:center; }
   .scene-8{ background-image: url('gambarsite8.jpeg'); background-size:cover; background-position:center; }
   .scene-9{ background-image: url('gambarsite9.jpeg'); background-size:cover; background-position:center; }
@@ -196,33 +177,28 @@
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     text-align:center; max-width:780px; margin:0 auto; padding:0 24px;
   }
-  .hero-tagline{
-    font-family:var(--font-mono); font-size:12px; letter-spacing:0.22em;
-    text-transform:uppercase; color:var(--sky-200); opacity:0.95; margin-bottom:14px;
-  }
   .hero-eyebrow{
-    font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.28em;
-    text-transform:uppercase; color:var(--sky-300); margin-bottom:22px;
+    font-family:calibri; font-size:12px; letter-spacing:0.28em;
+    text-transform:uppercase; color:#FFFFFF; margin-bottom:18px;
   }
   .hero-content h1{
     font-family:var(--font-display); font-weight:800;
-    font-size:clamp(28px, 4.4vw, 46px); line-height:1.2; letter-spacing:-0.01em;
-    color:var(--white); margin-bottom:34px;
+    font-size:clamp(26px, 4.2vw, 40px); line-height:1.2; letter-spacing:-0.01em;
+    color:var(--white); margin-bottom:28px;
     text-shadow:0 4px 24px rgba(0,0,0,0.35);
   }
   .btn-pill{
     display:inline-flex; align-items:center; gap:10px;
-    font-family:var(--font-mono); font-size:12px; letter-spacing:0.1em;
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.1em;
     text-transform:uppercase; font-weight:600; color:var(--navy-900);
-    padding:14px 30px; border-radius:100px; background:var(--white);
+    padding:12px 28px; border-radius:100px; background:var(--white);
     box-shadow:0 10px 26px rgba(0,0,0,0.25);
     transition:all 0.25s;
   }
   .btn-pill:hover{ background:var(--sky-200); transform:translateY(-2px); }
 
-  /* Carousel controls */
   .carousel-dots{
-    position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+    position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
     z-index:20; display:flex; gap:8px; max-width: 90%; flex-wrap: wrap; justify-content: center;
   }
   .dot{
@@ -230,11 +206,11 @@
     background:rgba(255,255,255,0.4); border:none; padding:0;
     transition:all 0.25s;
   }
-  .dot.active{ background:var(--white); width:26px; border-radius:5px; }
+  .dot.active{ background:var(--white); width:24px; border-radius:5px; }
 
   .carousel-arrow{
     position:absolute; top:50%; transform:translateY(-50%);
-    z-index:20; width:44px; height:44px; border-radius:50%;
+    z-index:20; width:40px; height:40px; border-radius:50%;
     background:rgba(255,255,255,0.14);
     border:1px solid rgba(255,255,255,0.35);
     backdrop-filter:blur(6px);
@@ -243,18 +219,17 @@
     transition:background 0.2s;
   }
   .carousel-arrow:hover{ background:rgba(255,255,255,0.28); }
-  .carousel-arrow.prev{ left:24px; }
-  .carousel-arrow.next{ right:24px; }
-  .carousel-arrow svg{ width:18px; height:18px; }
+  .carousel-arrow.prev{ left:20px; }
+  .carousel-arrow.next{ right:20px; }
+  .carousel-arrow svg{ width:16px; height:16px; }
   @media (max-width:700px){ .carousel-arrow{ display:none; } }
 
-  /* ===== CARD ROW ===== */
-  .card-row{ position:relative; z-index:10; margin-top:-90px; padding-bottom:110px; }
-  .cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+  .card-row{ position:relative; z-index:10; margin-top:-80px; padding-bottom:90px; }
+  .cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
   .card{
-    position:relative; height:280px;
+    position:relative; height:270px;
     display:flex; flex-direction:column; justify-content:flex-end;
-    padding:26px 26px 30px; overflow:hidden; border-radius:14px;
+    padding:24px 24px 28px; overflow:hidden; border-radius:14px;
     box-shadow:0 20px 45px rgba(10,36,64,0.18);
   }
   .card.photo-a{
@@ -277,24 +252,17 @@
       linear-gradient(160deg, #b8dff2, #3f9fd6 50%, #0c2f52);
     color:var(--white);
   }
-  .card-tag{
-    display:inline-block; font-family:var(--font-mono); font-size:10.5px;
-    letter-spacing:0.08em; text-transform:uppercase; color:var(--ocean-600);
-    background:var(--white); padding:5px 12px; border-radius:3px;
-    margin-bottom:14px; width:fit-content;
-  }
-  .card h3{ font-family:var(--font-display); font-weight:700; font-size:19px; line-height:1.25; margin-bottom:8px; }
-  .card p{ font-size:13.5px; opacity:0.88; margin-bottom:18px; }
+  .card h3{ font-family:var(--font-display); font-weight:700; font-size:18px; line-height:1.25; margin-bottom:8px; }
+  .card p{ font-size:13px; opacity:0.88; margin-bottom:16px; }
   .card-link{
     display:inline-flex; align-items:center; gap:8px;
-    font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em;
-    text-transform:uppercase; padding:10px 18px; border-radius:100px;
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.08em;
+    text-transform:uppercase; padding:8px 16px; border-radius:100px;
     width:fit-content; transition:all 0.2s;
+    color:var(--white); border:1px solid rgba(255,255,255,0.5);
   }
-  .card.photo-a .card-link, .card.photo-b .card-link, .card.info .card-link, .card.photo-c .card-link{ color:var(--white); border:1px solid rgba(255,255,255,0.5); }
-  .card.photo-a .card-link:hover, .card.photo-b .card-link:hover, .card.info .card-link:hover, .card.photo-c .card-link:hover{ background:var(--white); color:var(--navy-900); }
+  .card-link:hover{ background:var(--white); color:var(--navy-900); }
 
-  /* ===== SUBPAGE SECTION STYLES ===== */
   .subpage{
     display:none;
     min-height:60vh;
@@ -305,7 +273,7 @@
     display:block;
   }
   .page-header{
-    border-bottom:2px solid var(--ocean-500);
+    border-bottom:2px solid #FFFFFF;
     padding-bottom:16px;
     margin-bottom:40px;
   }
@@ -313,7 +281,7 @@
     font-family:var(--font-display);
     font-weight:800;
     font-size:32px;
-    color:var(--navy-900);
+    color:#FFFFFF;
   }
   .content-card{
     background:var(--white);
@@ -330,41 +298,30 @@
     margin-bottom:16px;
   }
 
-  /* ===== FOOTER ===== */
   footer{
     position:relative; z-index:1;
     background:linear-gradient(180deg, #f2fafd, #e6f4fb);
     border-top:1px solid var(--line);
-    padding:64px 0 32px;
+    padding:56px 0 32px;
   }
-  .footer-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-bottom:44px; }
+  .footer-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:36px; margin-bottom:40px; }
   .office-block h4{
-    font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:0.02em;
-    color:var(--ocean-600); margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--line);
+    font-family:var(--font-display); font-weight:700; font-size:14.5px; letter-spacing:0.02em;
+    color:var(--ocean-600); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--line);
   }
-  .office-block address{ font-style:normal; font-size:14px; line-height:1.7; color:var(--ink-700); }
-  .office-block .phone-line{
-    display:flex; align-items:center; gap:8px; margin-top:12px;
-    font-family:var(--font-mono); font-size:13px; color:var(--navy-900); font-weight:600;
-  }
-  .office-block .phone-line svg{ width:14px; height:14px; color:var(--ocean-600); flex-shrink:0; }
+  .office-block address{ font-style:normal; font-size:13.5px; line-height:1.7; color:var(--ink-700); }
   .footer-bottom{
     display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;
-    padding-top:28px; border-top:1px solid var(--line);
-    font-family:var(--font-mono); font-size:12px; color:var(--ocean-600); opacity:0.85;
+    padding-top:24px; border-top:1px solid var(--line);
+    font-family:var(--font-mono); font-size:11.5px; color:var(--ocean-600); opacity:0.85;
   }
-  .footer-bottom .phone-line{ display:flex; align-items:center; gap:8px; font-weight:600; color:var(--navy-900); }
-  .footer-bottom .phone-line svg{ width:14px; height:14px; color:var(--ocean-600); }
 
   @media (max-width:1080px) and (min-width:881px){
     .cards{grid-template-columns:repeat(2,1fr);}
   }
-
   @media (max-width:880px){
-    nav ul{display:none;}
     .cards{grid-template-columns:1fr;}
-    .card-row{margin-top:-50px;}
-    .hero{min-height:76vh;}
+    .card-row{margin-top:-40px;}
     .footer-grid{grid-template-columns:1fr;}
   }
   :focus-visible{outline:2px solid var(--ocean-500); outline-offset:2px;}
@@ -378,12 +335,10 @@
       <div class="logo-mark">
         <img src="Logo_ILBB.png" alt="Logo PT. Indotan Lombok Barat Bangkit">
       </div>
-      <div class="masthead-text">
-        <div class="company-name">PT INDOTAN LOMBOK BARAT BANGKIT</div>
-        <div class="company-tagline">Innovative . Learning . Balance . Belonging</div>
-      </div>
     </div>
+    <div class="company-title-main">PT INDOTAN LOMBOK BARAT BANGKIT</div>
   </div>
+
   <div class="subnav">
     <div class="subnav-inner">
       <nav style="padding:0; max-width:none; margin:0;">
@@ -394,15 +349,17 @@
             <ul class="dropdown-menu">
               <li><a href="#" class="nav-link" data-target="management">Our Management</a></li>
               <li><a href="#" class="nav-link" data-target="ownership">Our Ownership</a></li>
+              <li><a href="#" class="nav-link" data-target="organization">Organization Structure</a></li>
+              <li><a href="#" class="nav-link" data-target="commitment">Our Commitment</a></li>
             </ul>
           </li>
           <li><a href="#" class="nav-link" data-target="culture">Our ILBB Culture</a></li>
           <li class="has-dropdown">
             <a href="#" class="nav-link" data-target="block">Our Block ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="#" class="nav-link" data-target="block-pelangan">Project Pelangan</a></li>
-              <li><a href="#" class="nav-link" data-target="block-mecanggah">Project Mecanggah</a></li>
-              <li><a href="#" class="nav-link" data-target="block-selodong">Project Selodong</a></li>
+              <li><a href="#" class="nav-link" data-target="block-pelangan">Block Pelangan</a></li>
+              <li><a href="#" class="nav-link" data-target="block-mecanggah">Block Mecanggah</a></li>
+              <li><a href="#" class="nav-link" data-target="block-selodong">Block Selodong</a></li>
             </ul>
           </li>
           <li class="has-dropdown">
@@ -415,6 +372,8 @@
               <li><a href="#" class="nav-link" data-target="project-exploration">Exploration</a></li>
             </ul>
           </li>
+          <li><a href="#" class="nav-link" data-target="location">Our Location</a></li>
+          <li><a href="#" class="nav-link" data-target="news">News</a></li>
           <li><a href="#" class="nav-link" data-target="contact">Contact</a></li>
           <li><a href="#" class="nav-link" data-target="career">Career</a></li>
         </ul>
@@ -429,75 +388,27 @@
 <!-- MAIN HOME CONTENT VIEW -->
 <div id="page-home" class="page-view">
   <section class="hero" id="heroCarousel">
-    <div class="slide active" data-slide="0">
-      <div class="scene scene-1"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="1">
-      <div class="scene scene-2"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="2">
-      <div class="scene scene-3"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="3">
-      <div class="scene scene-4"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="4">
-      <div class="scene scene-5"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="5">
-      <div class="scene scene-6"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="6">
-      <div class="scene scene-7"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="7">
-      <div class="scene scene-8"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="8">
-      <div class="scene scene-9"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="9">
-      <div class="scene scene-10"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="10">
-      <div class="scene scene-11"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="11">
-      <div class="scene scene-12"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="12">
-      <div class="scene scene-13"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="13">
-      <div class="scene scene-14"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="14">
-      <div class="scene scene-15"></div>
-      <div class="overlay"></div>
-    </div>
-    <div class="slide" data-slide="15">
-      <div class="scene scene-16"></div>
-      <div class="overlay"></div>
-    </div>
+    <div class="slide active" data-slide="0"><div class="scene scene-1"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="1"><div class="scene scene-2"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="2"><div class="scene scene-3"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="3"><div class="scene scene-4"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="4"><div class="scene scene-5"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="5"><div class="scene scene-6"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="6"><div class="scene scene-7"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="7"><div class="scene scene-8"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="8"><div class="scene scene-9"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="9"><div class="scene scene-10"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="10"><div class="scene scene-11"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="11"><div class="scene scene-12"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="12"><div class="scene scene-13"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="13"><div class="scene scene-14"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="14"><div class="scene scene-15"></div><div class="overlay"></div></div>
+    <div class="slide" data-slide="15"><div class="scene scene-16"></div><div class="overlay"></div></div>
 
     <div class="hero-content">
-      <div class="hero-tagline">Innovative &ndash; Learning &ndash; Balance &ndash; Belonging</div>
+      <div class="hero-eyebrow">WELCOME</div>
       <div class="hero-eyebrow">PT. Indotan Lombok Barat Bangkit</div>
-      <h1>From Earth for Life :<br>Mining with Heart and Integrity</h1>
+      <h1>INNOVATIVE &ndash; LEARNING<br>BALANCE &ndash; BELONGING</h1>
       <a href="#" class="btn-pill">Discover More →</a>
     </div>
 
@@ -559,16 +470,18 @@
 <!-- PAGE VIEW: OUR MANAGEMENT -->
 <div id="page-management" class="subpage page-view">
   <div class="wrap">
-    <div class="page-header">
-      <h2>Our Management</h2>
-    </div>
+    <div class="page-header"><h2>Our Management</h2></div>
     <div class="content-card">
       <h3>Board of Direksi (BoD)</h3>
-      <p>Board of Direksi (BoD) memimpin operasi harian dan strategi pertumbuhan PT. Indotan Lombok Barat Bangkit dengan tata kelola dan integritas tinggi.</p>
+      <p>Presiden Direktur : Suseno Kramadibrata.</p>
+      <p>Direktur : Dicky Zulkarnaen.</p>
+      <p>Direktur : Sunraizal.</p>
     </div>
     <div class="content-card">
       <h3>BoC (Board of Comisaris)</h3>
-      <p>Board of Comisaris (BoC) bertugas mengawasi kebijakan direksi serta memberikan nasihat demi keberlanjutan dan kemajuan perusahaan secara jangka panjang.</p>
+      <p>Presiden Komisaris : Sri Hascaryo.</p>
+      <p>Komisaris : Bayu Irianto.</p>
+      <p>Komisaris : Iwan Budianto.</p>
     </div>
   </div>
 </div>
@@ -576,9 +489,7 @@
 <!-- PAGE VIEW: OUR OWNERSHIP -->
 <div id="page-ownership" class="subpage page-view">
   <div class="wrap">
-    <div class="page-header">
-      <h2>Our Ownership</h2>
-    </div>
+    <div class="page-header"><h2>Our Ownership</h2></div>
     <div class="content-card">
       <h3>Our Ownership</h3>
       <p>Informasi struktur kepemilikan saham dan pemegang saham PT. Indotan Lombok Barat Bangkit yang berkomitmen pada pertambangan berkelanjutan.</p>
@@ -586,54 +497,119 @@
   </div>
 </div>
 
+<!-- PAGE VIEW: ORGANIZATION STRUCTURE -->
+<div id="page-organization" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header"><h2>Organization Structure</h2></div>
+    <div class="content-card">
+      <h3>Struktur Organisasi PT. Indotan Lombok Barat Bangkit</h3>
+      <p style="margin-bottom: 20px; color: var(--ink-700);">Fase Construction-Operation 50 TPD & Project Development.</p>
+      <div style="width: 100%; height: 750px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #f8fafc;">
+        <object data="Org_Chat_PTILBB_50_TPD_&_Construction_New_Approved.pdf" type="application/pdf" width="100%" height="100%">
+          <iframe src="Org_Chat_PTILBB_50_TPD_&_Construction_New_Approved.pdf" width="100%" height="100%" style="border: none;">
+            <p style="padding: 20px; text-align: center;">Browser Anda tidak mendukung pratinjau PDF. Silakan unduh dokumen melalui tombol di bawah ini.</p>
+          </iframe>
+        </object>
+      </div>
+      <div style="margin-top: 24px; text-align: center;">
+        <a href="Org_Chat_PTILBB_50_TPD_&_Construction_New_Approved.pdf" target="_blank" class="btn-pill" style="background: var(--ocean-600); color: var(--white); text-decoration: none;">
+          📥 Download PDF Struktur Organisasi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: OUR COMMITMENT -->
+<div id="page-commitment" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header"><h2>Our Commitment</h2></div>
+    <div class="content-card">
+      <h3>Kebijakan Keselamatan Pertambangan PT. Indotan Lombok Barat Bangkit</h3>
+      <p style="margin-bottom: 20px; color: var(--ink-700);">Komitmen penuh terhadap prinsip pertambangan yang bertanggung jawab, K3, dan pelestarian lingkungan.</p>
+      <div style="width: 100%; height: 750px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #f8fafc;">
+        <object data="Our-Commitment.pdf" type="application/pdf" width="100%" height="100%">
+          <iframe src="Our-Commitment.pdf" width="100%" height="100%" style="border: none;">
+            <p style="padding: 20px; text-align: center;">Browser Anda tidak mendukung pratinjau PDF. Silakan unduh dokumen melalui tombol di bawah ini.</p>
+          </iframe>
+        </object>
+      </div>
+      <div style="margin-top: 24px; text-align: center;">
+        <a href="Our-Commitment.pdf" target="_blank" class="btn-pill" style="background: var(--ocean-600); color: var(--white); text-decoration: none;">
+          📥 Download PDF Our Commitment
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- PAGE VIEW: OUR ILBB CULTURE -->
 <div id="page-culture" class="subpage page-view">
   <div class="wrap">
-    <div class="page-header">
-      <h2>Our ILBB Culture</h2>
-    </div>
+    <div class="page-header"><h2>Our ILBB Culture</h2></div>
     <div class="content-card">
-      <h3>Innovative, Learning, Balance, Belonging</h3>
-      <p>Budaya perusahaan PT. Indotan Lombok Barat Bangkit berlandaskan nilai-nilai inti yang mendorong inovasi, pembelajaran berkelanjutan, keseimbangan hidup, serta rasa memiliki yang kuat di antara seluruh anggota tim.</p>
+      <h3>Innovative, Learning, Balance, Belonging (ILBB Culture)</h3>
+      <p style="margin-bottom: 20px; color: var(--ink-700);">Nilai-nilai inti dan panduan budaya kerja PT. Indotan Lombok Barat Bangkit.</p>
+      <div style="width: 100%; height: 750px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #f8fafc;">
+        <object data="ILBB Culture.pdf" type="application/pdf" width="100%" height="100%">
+          <iframe src="ILBB Culture.pdf" width="100%" height="100%" style="border: none;">
+            <p style="padding: 20px; text-align: center;">Browser Anda tidak mendukung pratinjau PDF. Silakan unduh dokumen melalui tombol di bawah ini.</p>
+          </iframe>
+        </object>
+      </div>
+      <div style="margin-top: 24px; text-align: center;">
+        <a href="ILBB Culture.pdf" target="_blank" class="btn-pill" style="background: var(--ocean-600); color: var(--white); text-decoration: none;">
+          📥 Download PDF ILBB Culture
+        </a>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- PAGE VIEW: PROJECT PELANGAN -->
+<!-- PAGE VIEW: BLOCK PELANGAN -->
 <div id="page-block-pelangan" class="subpage page-view">
   <div class="wrap">
-    <div class="page-header">
-      <h2>Project Pelangan</h2>
-    </div>
+    <div class="page-header"><h2>Block Pelangan</h2></div>
     <div class="content-card">
-      <h3>Project Pelangan</h3>
-      <p>Informasi dan detail operasional mengenai Project Pelangan di wilayah kerja PT. Indotan Lombok Barat Bangkit.</p>
+      <h3>Citra Satelit & Peta Block Pelangan</h3>
+      <p style="margin-bottom: 20px; color: var(--ink-700);">Informasi dan detail operasional mengenai Block Pelangan di wilayah kerja PT. Indotan Lombok Barat Bangkit.</p>
+      
+      <!-- Menampilkan Gambar Peta Block Pelangan -->
+      <div style="width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #f8fafc; text-align: center; padding: 10px;">
+        <img src="PETA BLOCK PELANGAN.jpeg" alt="Peta Citra Satelit Block Pelangan" style="width: 100%; height: auto; max-height: 850px; object-fit: contain; display: block; margin: 0 auto; border-radius: 6px;">
+      </div>
     </div>
   </div>
 </div>
 
-<!-- PAGE VIEW: PROJECT MECANGGAH -->
+<!-- PAGE VIEW: BLOCK MECANGGAH -->
 <div id="page-block-mecanggah" class="subpage page-view">
   <div class="wrap">
-    <div class="page-header">
-      <h2>Project Mecanggah</h2>
-    </div>
+    <div class="page-header"><h2>Block Mecanggah</h2></div>
     <div class="content-card">
-      <h3>Project Mecanggah</h3>
-      <p>Informasi dan detail operasional mengenai Project Mecanggah di wilayah kerja PT. Indotan Lombok Barat Bangkit.</p>
+      <h3>Block Mecanggah</h3>
+      <p style="margin-bottom: 20px; color: var(--ink-700);">Informasi dan detail operasional mengenai Block Mecanggah di wilayah kerja PT. Indotan Lombok Barat Bangkit.</p>
+     
+      <!-- Menampilkan Gambar Peta Block Mecanggah -->
+      <div style="width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #f8fafc; text-align: center; padding: 10px;">
+        <img src="PETA BLOCK MENCANGGAH.jpeg" alt="Peta Citra Satelit Block Mecanggah" style="width: 100%; height: auto; max-height: 850px; object-fit: contain; display: block; margin: 0 auto; border-radius: 6px;">
+      </div>
     </div>
   </div>
 </div>
-
-<!-- PAGE VIEW: PROJECT SELODONG -->
+    
+    <!-- PAGE VIEW: BLOCK SELODONG -->
 <div id="page-block-selodong" class="subpage page-view">
   <div class="wrap">
-    <div class="page-header">
-      <h2>Project Pelangan</h2>
-    </div>
+    <div class="page-header"><h2>Block Selodong</h2></div>
     <div class="content-card">
-      <h3>Project Pelangan</h3>
-      <p>Informasi dan detail terkait Project Pelangan / Selodong di wilayah operasional perusahaan.</p>
+      <h3>Block Selodong</h3>
+      <p style="margin-bottom: 20px; color: var(--ink-700);">Informasi dan detail terkait Block Selodong di wilayah operasional perusahaan.</p>
+      
+      <!-- Menampilkan Gambar Peta Block Mecanggah -->
+      <div style="width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #f8fafc; text-align: center; padding: 10px;">
+        <img src="PETA BLOCK SELODONG.jpeg" alt="Peta Citra Satelit Block Mecanggah" style="width: 100%; height: auto; max-height: 850px; object-fit: contain; display: block; margin: 0 auto; border-radius: 6px;">
+      </div>
     </div>
   </div>
 </div>
@@ -641,9 +617,7 @@
 <!-- PAGE VIEW: CONSTRUCTION CIL 50 TPD -->
 <div id="page-project-construction" class="subpage page-view">
   <div class="wrap">
-    <div class="page-header">
-      <h2>Construction CIL 50 TPD</h2>
-    </div>
+    <div class="page-header"><h2>Construction CIL 50 TPD</h2></div>
     <div class="content-card">
       <h3>Construction CIL 50 TPD</h3>
       <p>Progres dan rincian teknis pembangunan fasilitas pengolahan mineral dengan metode Carbon in Leach (CIL) kapasitas 50 Ton Per Day (TPD).</p>
@@ -654,9 +628,7 @@
 <!-- PAGE VIEW: OPERATION CIL 50 TPD -->
 <div id="page-project-operation" class="subpage page-view">
   <div class="wrap">
-    <div class="page-header">
-      <h2>Operation CIL 50 TPD</h2>
-    </div>
+    <div class="page-header"><h2>Operation CIL 50 TPD</h2></div>
     <div class="content-card">
       <h3>Operation CIL 50 TPD</h3>
       <p>Aktivitas operasional harian fasilitas pengolahan bijih emas CIL berkapasitas 50 Ton Per Day.</p>
@@ -667,9 +639,7 @@
 <!-- PAGE VIEW: DRILLING PROJECT -->
 <div id="page-project-drilling" class="subpage page-view">
   <div class="wrap">
-    <div class="page-header">
-      <h2>Drilling Project</h2>
-    </div>
+    <div class="page-header"><h2>Drilling Project</h2></div>
     <div class="content-card">
       <h3>Drilling Project</h3>
       <p>Program pengeboran eksplorasi dan delimitasi cadangan untuk mendukung ekspansi sumber daya mineral perusahaan.</p>
@@ -680,9 +650,7 @@
 <!-- PAGE VIEW: PROJECT DEVELOPMENT CIL 2000 TPD -->
 <div id="page-project-development" class="subpage page-view">
   <div class="wrap">
-    <div class="page-header">
-      <h2>Project Development CIL 2000 TPD</h2>
-    </div>
+    <div class="page-header"><h2>Project Development CIL 2000 TPD</h2></div>
     <div class="content-card">
       <h3>Project Development CIL 2000 TPD</h3>
       <p>Perencanaan strategis dan pengembangan fasilitas skala besar CIL kapasitas 2000 Ton Per Day untuk peningkatan kapasitas produksi jangka panjang.</p>
@@ -693,9 +661,7 @@
 <!-- PAGE VIEW: EXPLORATION -->
 <div id="page-project-exploration" class="subpage page-view">
   <div class="wrap">
-    <div class="page-header">
-      <h2>Exploration</h2>
-    </div>
+    <div class="page-header"><h2>Exploration</h2></div>
     <div class="content-card">
       <h3>Exploration</h3>
       <p>Kegiatan penyelidikan geologi, pemetaan, dan analisis data untuk menemukan potensi cadangan mineral baru di wilayah konsesi.</p>
@@ -703,35 +669,113 @@
   </div>
 </div>
 
+<!-- PAGE VIEW: OUR LOCATION -->
+<div id="page-location" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header"><h2>Our Location & Project Accessibility</h2></div>
+    <div class="content-card">
+      <h3>Peta Lokasi & Wilayah Kerja PT. Indotan Lombok Barat Bangkit</h3>
+      <p style="margin-bottom: 20px; color: var(--ink-700);">Berikut adalah peta lokasi proyek dan aksesibilitas wilayah operasional perusahaan di Indonesia dan Lombok Barat.</p>
+      <div style="width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #f8fafc; text-align: center; padding: 10px;">
+        <img src="Lokasi Proyek.jpg" alt="Peta Lokasi Proyek PT. Indotan Lombok Barat Bangkit" style="width: 100%; height: auto; max-height: 800px; object-fit: contain; display: block; margin: 0 auto; border-radius: 6px;">
+      </div>
+    </div>
+    <div class="content-card">
+      <h3>Detail Wilayah Operasional</h3>
+      <p><strong>Site Office (Sekotong, Lombok):</strong> Jl. Raya Sepi, Sekotong Tengah, Kecamatan Sekotong, Kabupaten Lombok Barat, Nusa Tenggara Barat, Indonesia 83365.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE VIEW: NEWS -->
+<div id="page-news" class="subpage page-view">
+  <div class="wrap">
+    <div class="page-header"><h2>Company News & Updates</h2></div>
+    
+    <!-- KARTU BERITA UTAMA -->
+    <div class="content-card">
+      <h3>Berita & Pengumuman Terbaru</h3>
+      <p style="color: var(--ink-700); margin-bottom: 24px;">Ikuti perkembangan informasi terbaru seputar aktivitas operasional, pencapaian proyek, serta program tanggung jawab sosial PT. Indotan Lombok Barat Bangkit.</p>
+      
+      <!-- Konten Artikel Berita -->
+      <div style="background: #f8fafc; border: 1px solid var(--line); border-radius: 10px; padding: 24px; margin-bottom: 20px;">
+        <h4 style="font-family: var(--font-display); color: var(--navy-900); font-size: 20px; margin-bottom: 16px;">
+          Kunjungan Kerja Wakil Bupati Lombok Barat ke Site Project PT. Indotan Lombok Barat Bangkit
+        </h4>
+        
+        <!-- Gambar Dokumentasi Berita -->
+        <div style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--line);">
+          <img src="Dokumentasi Dirut Wabup.jpeg" alt="Kunjungan Kerja Wakil Bupati Lombok Barat" style="width: 100%; height: auto; display: block; object-fit: cover;">
+        </div>
+
+        <!-- Narasi Berita -->
+        <div style="font-size: 14.5px; line-height: 1.8; color: var(--ink-700); text-align: justify; display: flex; flex-direction: column; gap: 14px;">
+          <p>
+            Pada 28 Oktober 2026, Wakil Bupati Lombok Barat, Ibu Hj. Nurul Adha, bersama jajaran Forum Koordinasi Pimpinan Daerah (Forkopimda) Kabupaten Lombok Barat melaksanakan kunjungan kerja ke site project PT Indotan Lombok Barat Bangkit di Sekotong untuk meninjau langsung progres pekerjaan dan perkembangan kegiatan di lapangan.
+          </p>
+          <p>
+            Dalam kunjungan tersebut, rombongan Wakil Bupati disambut dan didampingi oleh jajaran manajemen PT Indotan Lombok Barat Bangkit, yaitu Bapak Dicky Zulkarnaen selaku Direktur dan Bapak Loto selaku Kepala Teknik Tambang (KTT), yang turut memberikan gambaran mengenai progres pekerjaan di area proyek.
+          </p>
+          <p>
+            Pada kesempatan ini, ditekankan pentingnya pelaksanaan kegiatan pertambangan yang senantiasa mengedepankan kepatuhan terhadap regulasi (compliance), penerapan praktik pertambangan yang bertanggung jawab, peningkatan kesejahteraan masyarakat, serta dorongan terhadap pertumbuhan ekonomi dan peningkatan Pendapatan Asli Daerah (PAD) Kabupaten Lombok Barat.
+          </p>
+          <p>
+            Wakil Bupati beserta jajaran turut menyampaikan apresiasi atas progres pekerjaan yang telah dicapai oleh PT Indotan Lombok Barat Bangkit. Apresiasi tersebut menjadi dorongan bagi perusahaan untuk terus berkembang, menjalankan kegiatan secara bertanggung jawab, serta memberikan kontribusi positif bagi masyarakat dan pembangunan daerah.
+          </p>
+          <p>
+            Melalui kolaborasi dan sinergi yang berkelanjutan antara perusahaan, pemerintah daerah, dan masyarakat, PT Indotan Lombok Barat Bangkit berharap dapat menghadirkan manfaat jangka panjang, menciptakan peluang pertumbuhan ekonomi, serta mendukung kemajuan dan kesejahteraan masyarakat Kabupaten Lombok Barat.
+          </p>
+          <!-- Blok Artikel Berita Baru -->
+      <div style="background: #f8fafc; border: 1px solid var(--line); border-radius: 10px; padding: 24px; margin-bottom: 20px;">
+        <h4 style="font-family: var(--font-display); color: var(--navy-900); font-size: 20px; margin-bottom: 16px;">Judul Berita Baru Di Sini</h4>
+        <div style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 20px;">
+          <img src="nama-file-foto-baru.jpg" alt="Deskripsi Foto" style="width: 100%; height: auto; display: block;">
+        </div>
+        <p style="font-size: 14.5px; line-height: 1.8; color: var(--ink-700);">Isi paragraf berita di sini...</p>
+      </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
 <!-- PAGE VIEW: CONTACT -->
 <div id="page-contact" class="subpage page-view">
   <div class="wrap">
-    <div class="page-header">
-      <h2>Contact Us</h2>
-    </div>
+    <div class="page-header"><h2>Contact Us</h2></div>
     <div class="content-card">
       <h3>Get in Touch</h3>
       <ul style="list-style: none; padding: 0; margin: 0;">
-        <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
-          <span style="color: var(--ocean-600); font-size: 18px; line-height: 1;">📍</span>
-          <div>
-            <strong>Head Office :</strong><br>
-            Bakrie Tower Lantai 22, Komp. Rasuna Epicentrum, Jl. HR Rasuna Said, Karet Kuningan, Setiabudi, Jakarta Selatan, DKI Jakarta – Indonesia 12940
-          </div>
+       <!-- Email --> 
+          <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
+    <span style="color: var(--ocean-600); display: flex; align-items: center; margin-top: 2px;">
+      <!-- Icon Email Vektor -->
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </span>
+    <div><strong>Email :</strong><br>info@ilbb.co.id</div>
+        </li> 
+        <!-- Phone -->
+  <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
+    <span style="color: var(--ocean-600); display: flex; align-items: center; margin-top: 2px;">
+      <!-- Icon Telepon Vektor -->
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    </span>
+    <div><strong>Phone :</strong><br>021-3882-5452</div>
+
         </li>
         <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
           <span style="color: var(--ocean-600); font-size: 18px; line-height: 1;">📍</span>
-          <div>
-            <strong>Jakarta Office :</strong><br>
-            Jl. Pangrango No 3A, Kel. Guntur, Kec. Setiabudi, Kota Jakarta Selatan, DKI Jakarta
-          </div>
+          <div><strong>Head Office :</strong><br>Bakrie Tower Lantai 22, Komp. Rasuna Epicentrum, Jl. HR Rasuna Said, Karet Kuningan, Setiabudi, Jakarta Selatan, DKI Jakarta – Indonesia 12940</div>
+        </li>
+        <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
+          <span style="color: var(--ocean-600); font-size: 18px; line-height: 1;">📍</span>
+          <div><strong>Jakarta Office :</strong><br>Jl. Pangrango No 3A, Kel. Guntur, Kec. Setiabudi, Kota Jakarta Selatan, DKI Jakarta</div>
         </li>
         <li style="margin-bottom: 0; display: flex; align-items: flex-start; gap: 12px;">
           <span style="color: var(--ocean-600); font-size: 18px; line-height: 1;">📍</span>
-          <div>
-            <strong>Site Office :</strong><br>
-            Jl. Raya Sepi, Sekotong Tengah, Kecamatan Sekotong, Kabupaten Lombok Barat, Nusa Tenggara Barat, Indonesia 83365
-          </div>
+          <div><strong>Site Office :</strong><br>Jl. Raya Sepi, Sekotong Tengah, Kecamatan Sekotong, Kabupaten Lombok Barat, Nusa Tenggara Barat, Indonesia 83365</div>
         </li>
       </ul>
     </div>
@@ -741,12 +785,11 @@
 <!-- PAGE VIEW: CAREER -->
 <div id="page-career" class="subpage page-view">
   <div class="wrap">
-    <div class="page-header">
-      <h2>Career</h2>
-    </div>
+    <div class="page-header"><h2>Career</h2></div>
     <div class="content-card">
       <h3>Join Our Team</h3>
-      <p>Temukan peluang karir dan bergabunglah bersama kami untuk membangun industri pertambangan yang berintegritas, inovatif, dan berkelanjutan.</p>
+      <p>Tumbuh bersama (Learning & Belonging), berinovasi tanpa batas (Innovative), dan hidup lebih bermakna (Balanced). Yuk, temukan peluang karirmu dan bergabunglah untuk membangun masa depan pertambangan yang berintegritas, inovatif, dan berkelanjutan.</p>
+      <p>Email : recruitment@ilbb.co.id</p>
     </div>
   </div>
 </div>
@@ -756,43 +799,20 @@
     <div class="footer-grid">
       <div class="office-block">
         <h4>Head Office</h4>
-        <address>
-          Bakrie Tower Lantai 22,<br>
-          Komp. Rasuna Epicentrum,<br>
-          Jl. HR Rasuna Said, Karet Kuningan,<br>
-          Setiabudi, Jakarta Selatan<br>
-          DKI Jakarta &ndash; Indonesia 12940
-        </address>
+        <address>Bakrie Tower Lantai 22,<br>Komp. Rasuna Epicentrum,<br>Jl. HR Rasuna Said, Karet Kuningan,<br>Setiabudi, Jakarta Selatan<br>DKI Jakarta &ndash; Indonesia 12940</address>
       </div>
       <div class="office-block">
         <h4>Jakarta Office</h4>
-        <address>
-          Jl. Pangrango No 3A, Kel. Guntur,<br>
-          Kec. Setiabudi, Kota Jakarta Selatan<br>
-          DKI Jakarta
-        </address>
-        <div class="phone-line">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Phone : 021-3882 5452
-        </div>
+        <address>Jl. Pangrango No 3A, Kel. Guntur,<br>Kec. Setiabudi, Kota Jakarta Selatan<br>DKI Jakarta</address>
       </div>
       <div class="office-block">
         <h4>Site Office</h4>
-        <address>
-          Jl. Raya Sepi, Sekotong Tengah,<br>
-          Kecamatan Sekotong,<br>
-          Kabupaten Lombok Barat,<br>
-          Nusa Tenggara Barat<br>
-          Indonesia 83365
-        </address>
+        <address>Jl. Raya Sepi, Sekotong Tengah,<br>Kecamatan Sekotong,<br>Kabupaten Lombok Barat,<br>Nusa Tenggara Barat<br>Indonesia 83365</address>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 PT. Indotan Lombok Barat Bangkit</span>
-      <div class="phone-line">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        0813-3414-4419
-      </div>
+      <span>Phone : 021-3882 5452 | 0813-3414-4419</span>
     </div>
   </div>
 </footer>
